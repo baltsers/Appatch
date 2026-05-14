@@ -27,6 +27,50 @@ The artifact contains 2 file(s), primarily Documentation.
 # APPATCH: Automated Adaptive Prompting Large Language Models for Real-World Software Vulnerability Patching
 To elicit LLMs to effectively reason about vulnerable code behaviors, which is essential for quality patch generation, we introduce vulnerability semantics reasoning and adaptive prompting on LLMs and instantiate the methodology as APPATCH, an automated LLM-based patching system.
 
+## How to use
+
+To run a functional APPATCH, we provide a Docker image with automatic scripts to execute the key inference components described in the paper, including *Semantics-Aware Scoping (Slicing)*, *Vulnerability Semantics Reasoning (Root Cause Analysis)*, *Dynamic Adaptive Prompting (Patch Generation)*, and *Multi-Faceted Patch Validation*. Please find the **Setup** and **Usage** below to install the image and execute the artifact.
+
+For the datasets and results, please download **appatch.zip** and use the **Package Structure** below to find the corresponding contents described in the original paper. 
+
+## Setup
+
+### Requirements
+
+Hardware:
+- \>= 20GB hardware disk space
+- \>= 16GB CPU memory
+
+Software:
+- Docker
+
+### Install
+We have uploaded the functional Docker image to Docker hub. To pull and run the image, simply run:
+
+> docker run -it -d --name appatch-demo g2ecb/appatch-demo bash
+
+After installing the image, enter the container with:
+
+> docker exec -it appatch-demo bash
+
+## Usage
+
+We provide a script to run the key components as a whole. However, since APPATCH depends on commercial LLMs, you need to first provide the API keys for Anthropic (Claude3),  OpenAI (GPT), Google (Gemini), and Groq (Llama3). 
+
+Besides, considering the high cost of the commercial LLMs, we only provide 16 interprocedural samples for the demo. For the complete datasets and results, please refer to **appatch.zip** below.
+
+After entering the Docker container, please first provide the keys above in the **api_keys.json** file.
+
+> cd ~ 
+
+> vi api_keys.json
+
+Then, execute the script to run the whole pipeline:
+
+> source run_demo.sh
+
+After running the pipeline, the generated slices, root cause analysis, patches, and validation results are stored in **interprocedural_sample_slices**, **root_cause_analysis**, **generated_patches**, and **generated_patches_<model-name>_valid**.
+
 
 ## Package Structure
 - `appatch.zip`: The datasets and results for the Appatch.
@@ -61,10 +105,20 @@ To elicit LLMs to effectively reason about vulnerable code behaviors, which is e
         - `baselines`: The source code for the traditional baselines we compared.
         - `usability_codeql`: The source code for the usability experiments with CodeQL.
 
-## How to use
 
-Please use the package structure to find the data and results for the corresponding contents described in the original paper. 
+## Semantics-Aware Scoping
 
+We also implemented the semantics-aware scoping based on SySeVR. To reuse this part, please use the following commands set up the vulnerability-semantics scoping module:
+
+> docker run -it -d --name vulnerability-slicing g2ecb/vulnerability-slicing bash
+
+> docker exec -it vulnerability-slicing bash
+
+Check the instructions in ~/run_all.sh and run the command:
+
+> source run_all.sh
+
+The generated slice can be found in ~/source2slice/C/test_data/4/vulnerable_slices.txt
 
 
 
