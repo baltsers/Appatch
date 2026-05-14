@@ -1,18 +1,24 @@
 # Appatch
 
-Project artifact for:
-
 **Appatch: Automated Adaptive Prompting Large Language Models for Real-World Software Vulnerability Patching**
 
-- Original artifact URL: <https://zenodo.org/records/14736631>
-- Imported via `pubs2github` from the publications page
-- Downloader: `zenodo` — Downloaded 2 file(s) from record 14736631
+| | |
+|---|---|
+| Original artifact | <https://zenodo.org/records/14736631> |
+| Imported from | the publications page |
+| Tool | `pubs2github` |
 
 
-This repository was created automatically. The contents under this
-directory mirror what was downloaded from the original artifact link
-above; refer to that source for the authoritative version, licensing,
-and any updates.
+---
+
+## Contents
+
+The artifact contains 2 file(s), primarily Documentation.
+
+```
+├── appatch.zip
+└── README.md
+```
 
 ---
 
