@@ -13,7 +13,7 @@
 
 ## Contents
 
-The artifact contains 13 file(s) including Python, and Documentation.
+The artifact contains 12 file(s) including Python, and Documentation.
 
 ```
 ├── appatch
@@ -24,7 +24,6 @@ The artifact contains 13 file(s) including Python, and Documentation.
 │   ├── datasets.tar.gz
 │   ├── README.md
 │   └── results.tar.gz
-├── appatch.zip
 └── README.md
 ```
 
